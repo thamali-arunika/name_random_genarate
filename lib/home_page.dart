@@ -15,6 +15,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title:const Text(
           'Group Creater',
           style: TextStyle(
+            fontFamily: 'MyFontCaveat',
             fontSize:30,
             fontWeight: FontWeight.bold,
           color:Color.fromARGB(255, 4, 152, 148)), 
