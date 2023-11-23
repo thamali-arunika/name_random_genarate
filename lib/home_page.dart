@@ -20,7 +20,6 @@ class _MyHomePageState extends State<MyHomePage> {
           color:Color.fromARGB(255, 4, 152, 148)), 
           ),
         ),
-      ),
-    );
+      );
   }
 }
