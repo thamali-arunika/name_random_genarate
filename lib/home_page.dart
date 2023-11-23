@@ -97,13 +97,23 @@ class _MyHomePageState extends State<MyHomePage> {
         leading: CircleAvatar(
           backgroundColor: index%2==0 ? Colors.pink :const Color.fromARGB(255, 157, 12, 58),
           foregroundColor: Colors.white,
-          child: Text(names[index].name[0]),
+          child: Text(names[index].name[0],
+          style:const TextStyle(
+           fontWeight: FontWeight.bold,
+          ),
+          ),
         ),
         title: Column(
           children: [
             Text(names[index].name),
           ],
         ),
+        trailing:const Row(
+          children: [
+            Icon(Icons.edit),
+            Icon(Icons.delete),
+          ],
+        ) ,
       ),
     );
   }
