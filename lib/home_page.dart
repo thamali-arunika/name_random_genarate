@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:random_creater/save_name.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -8,6 +9,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  List<SaveName>names=List.empty(growable: true);
   @override
   Widget build(BuildContext context) {
     debugDisableShadows=false;
