@@ -27,7 +27,9 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             children: [
               TextField(
-        
+        decoration: InputDecoration(
+          hintText: 'Enter Name',
+        ),
               )
             ],
           ),
