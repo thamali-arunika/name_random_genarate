@@ -12,6 +12,13 @@ class _MyHomePageState extends State<MyHomePage> {
     TextEditingController nameController = TextEditingController();
   List<SaveName> names = List.empty(growable: true);
   int selectedIndex = -1;
+  bool isNameDividedGroup=false;
+  List<List<SaveName>>groups=[];
+
+  void dividedGroup(){
+    List<SaveName> TransferredNames=List.from(names)..shuffle();
+    
+  }
   @override
   Widget build(BuildContext context) {
     debugDisableShadows = false;
@@ -70,10 +77,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 child:const Text('Update')),
 
-                const  ElevatedButton(
-                  onPressed: (){
-                    
-                  },
+                const  TextButton(
+                 onPressed:(){
+                  setState(() {
+                    dividedGroup();
+                  });
+                 },
                 child: Text(
                   'Split group',
                 style: TextStyle(color: Colors.black),
@@ -86,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     'Not Names Yet ....',
                     style: TextStyle(
                       fontSize: 50,
-                      fontFamily: 'MyFontCaveat',
+                      fontStyle: FontStyle.normal,
                       color:Color.fromARGB(255, 168, 3, 55),
                       fontWeight: FontWeight.bold
                     ),
