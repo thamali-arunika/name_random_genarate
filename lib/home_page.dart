@@ -29,6 +29,9 @@ class _MyHomePageState extends State<MyHomePage> {
               TextField(
         decoration: InputDecoration(
           hintText: 'Enter Name',
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10))
+          )
         ),
               )
             ],
