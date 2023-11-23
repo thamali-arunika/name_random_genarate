@@ -44,10 +44,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 ElevatedButton(onPressed: null, child: Text('Update')),
               ],
             ),
-          ListView.builder(
-            itemCount: names.length,
-            itemBuilder: (context, index) => getRow(),
-             )
+          Expanded(
+            child: ListView.builder(
+              itemCount: names.length,
+              itemBuilder: (context, index) => getRow(),
+               ),
+          )
           ],
         ),
       ),
