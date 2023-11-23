@@ -9,52 +9,48 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<SaveName>names=List.empty(growable: true);
+  List<SaveName> names = List.empty(growable: true);
   @override
   Widget build(BuildContext context) {
-    debugDisableShadows=false;
+    debugDisableShadows = false;
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        title:const Text(
-          'Group Creater',
-          style: TextStyle(
-            fontFamily: 'MyFontCaveat',
-            fontSize:30,
-            fontWeight: FontWeight.bold,
-          color:Color.fromARGB(255, 4, 152, 148)), 
+          centerTitle: true,
+          title: const Text(
+            'Group Creater',
+            style: TextStyle(
+                fontFamily: 'MyFontCaveat',
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255, 4, 152, 148)),
           )),
-        body:const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              SizedBox(height: 30),
-              TextField(
-                keyboardType: TextInputType.name,
-        decoration: InputDecoration(
-          hintText: 'Enter Name',
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10))
-          )
+      body: Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+         const   SizedBox(height: 30),
+          const  TextField(
+              keyboardType: TextInputType.name,
+              decoration: InputDecoration(
+                  hintText: 'Enter Name',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)))),
+            ),
+           const  SizedBox(height: 30),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(onPressed: null, child: Text('Save')),
+                ElevatedButton(onPressed: null, child: Text('Update')),
+              ],
+            ),
+          ListView.builder(
+            itemCount: names.length,
+            itemBuilder: (context, index) => getRow(),
+             )
+          ],
         ),
-              ),
-              SizedBox(height: 30),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                   onPressed:null,
-        
-                   child: Text('Save')),
-
-                     ElevatedButton(
-                      onPressed: null, 
-                      child: Text('Update')),
-                ],
-              )
-            ],
-          ),
-        ),
-      );
+      ),
+    );
   }
 }
