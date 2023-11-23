@@ -108,11 +108,14 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(names[index].name),
           ],
         ),
-        trailing:const Row(
-          children: [
-            Icon(Icons.edit),
-            Icon(Icons.delete),
-          ],
+        trailing:const SizedBox(
+          width: 70,
+          child: Row(
+            children: [
+              Icon(Icons.edit),
+              Icon(Icons.delete),
+            ],
+          ),
         ) ,
       ),
     );
