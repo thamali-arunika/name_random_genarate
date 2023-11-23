@@ -11,6 +11,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
     TextEditingController nameController = TextEditingController();
   List<SaveName> names = List.empty(growable: true);
+  int selectedIndex = -1;
   @override
   Widget build(BuildContext context) {
     debugDisableShadows = false;
@@ -48,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     if (name.isNotEmpty){
                       setState(() {
                         names.add(SaveName(name: name));
-                      
+                       nameController.text='';
                       });
                     }
                   },
@@ -60,7 +61,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     if (name.isNotEmpty){
                       setState(() {
                         nameController.text='';
-                        names.add(SaveName(name: name));
+                        names[selectedIndex].name=name;
+                        selectedIndex=-1;
+                        
                       });
                     }
                   },
@@ -117,7 +120,9 @@ class _MyHomePageState extends State<MyHomePage> {
               InkWell(
                 onTap: () {
                   nameController.text=names[index].name;
-                  
+setState(() {
+  selectedIndex=index;
+});
                   },
                 child:const Icon(Icons.edit)),
               InkWell(
