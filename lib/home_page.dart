@@ -65,9 +65,19 @@ class _MyHomePageState extends State<MyHomePage> {
                         selectedIndex=-1;
                         
                       });
+                      
                     }
                   },
                 child:const Text('Update')),
+
+                const  ElevatedButton(
+                  onPressed: (){
+                    
+                  },
+                child: Text(
+                  'Split group',
+                style: TextStyle(color: Colors.black),
+                )),
               ],
             ),
            const SizedBox(height: 50),
