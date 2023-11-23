@@ -104,16 +104,30 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(names[index].name),
+            Text(names[index].name,
+            style:const TextStyle(fontWeight: FontWeight.bold),),
           ],
         ),
-        trailing:const SizedBox(
+        trailing: SizedBox(
           width: 70,
           child: Row(
             children: [
-              Icon(Icons.edit),
-              Icon(Icons.delete),
+              InkWell(
+                onTap: () {
+                  
+                    //
+                  },
+                child:const Icon(Icons.edit)),
+              InkWell(
+                 onTap: (() {
+                    setState(() {
+                      names.removeAt(index);
+                    });
+                    //
+                  }),
+                child:const Icon(Icons.delete)),
             ],
           ),
         ) ,
