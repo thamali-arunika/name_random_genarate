@@ -96,6 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
       child: ListTile(
         leading: CircleAvatar(
           backgroundColor: index%2==0 ? Colors.pink :const Color.fromARGB(255, 157, 12, 58),
+          foregroundColor: Colors.white,
           child: Text(names[index].name[0]),
         ),
         title: Column(
