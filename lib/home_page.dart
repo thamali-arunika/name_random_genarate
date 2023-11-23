@@ -10,6 +10,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    debugDisableShadows=false;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -20,8 +21,8 @@ class _MyHomePageState extends State<MyHomePage> {
             fontSize:30,
             fontWeight: FontWeight.bold,
           color:Color.fromARGB(255, 4, 152, 148)), 
-          ),
-        ),
+          )),
+        
       );
   }
 }
