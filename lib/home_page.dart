@@ -9,16 +9,26 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-    TextEditingController nameController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
   List<SaveName> names = List.empty(growable: true);
   int selectedIndex = -1;
-  bool isNameDividedGroup=false;
-  List<List<SaveName>>groups=[];
 
-  void dividedGroup(){
-    List<SaveName> TransferredNames=List.from(names)..shuffle();
-    int groupSize=(TransferredNames.length/2).ceil();
+  void dividedGroup() {
+    List<SaveName> transferrednames = List.from(names)..shuffle();
+
+    int groupSize = (transferrednames.length / 5).ceil();
+
+    List<List<SaveName>> groups = List.generate(5, (index) {
+      int start = index * groupSize;
+      int end = (index + 1) * groupSize;
+      return transferrednames.sublist(
+          start, end > transferrednames.length ? transferrednames.length : end);
+    });
+    for (int i = 0; i < groups.length; i++) {
+      print('Group ${i + 1}: ${groups[i].map((name) => name.name).toList()}');
+    }
   }
+
   @override
   Widget build(BuildContext context) {
     debugDisableShadows = false;
@@ -34,71 +44,64 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Color.fromARGB(255, 4, 152, 148)),
           )),
       body: Padding(
-        padding:const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
             const SizedBox(height: 30),
-             TextField(
+            TextField(
               keyboardType: TextInputType.name,
               controller: nameController,
-              decoration:const InputDecoration(
+              decoration: const InputDecoration(
                   hintText: 'Enter Name',
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)))),
             ),
             const SizedBox(height: 30),
-             Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  onPressed: (){
-                    String name=nameController.text.trim();
-                    if (name.isNotEmpty){
-                      setState(() {
-                        names.add(SaveName(name: name));
-                       nameController.text='';
-                      });
-                    }
-                  },
-                  child:const Text('Save')),
-
+                    onPressed: () {
+                      String name = nameController.text.trim();
+                      if (name.isNotEmpty) {
+                        setState(() {
+                          names.add(SaveName(name: name));
+                          nameController.text = '';
+                        });
+                      }
+                    },
+                    child: const Text('Save')),
                 ElevatedButton(
-                   onPressed: (){
-                    String name=nameController.text.trim();
-                    if (name.isNotEmpty){
-                      setState(() {
-                        nameController.text='';
-                        names[selectedIndex].name=name;
-                        selectedIndex=-1;
-                        
-                      });
-                      
-                    }
-                  },
-                child:const Text('Update')),
-
-                const  TextButton(
-                 onPressed:(){
-                  setState(() {
-                    dividedGroup();
-                  });
-                 },
-                child: Text(
-                  'Split group',
-                style: TextStyle(color: Colors.black),
-                )),
+                    onPressed: () {
+                      String name = nameController.text.trim();
+                      if (name.isNotEmpty) {
+                        setState(() {
+                          nameController.text = '';
+                          names[selectedIndex].name = name;
+                          selectedIndex = -1;
+                        });
+                      }
+                    },
+                    child: const Text('Update')),
+            ElevatedButton(
+          onPressed: () {
+            setState(() {
+              dividedGroup();
+            });
+          },
+          child:const Text('Split group'),
+        ),
               ],
             ),
-           const SizedBox(height: 50),
+            const SizedBox(height: 50),
             names.isEmpty
                 ? const Text(
                     'Not Names Yet ....',
                     style: TextStyle(
-                      fontSize: 50,
-                      fontStyle: FontStyle.normal,
-                      color:Color.fromARGB(255, 168, 3, 55),
-                      fontWeight: FontWeight.bold
-                    ),
+                        fontSize: 50,
+                        fontStyle: FontStyle.normal,
+                        color: Color.fromARGB(255, 168, 3, 55),
+                        fontWeight: FontWeight.bold),
                   )
                 : Expanded(
                     child: ListView.builder(
@@ -113,23 +116,27 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget getRow(int index) {
-    
     return Card(
       child: ListTile(
         leading: CircleAvatar(
-          backgroundColor: index%2==0 ? Colors.pink :const Color.fromARGB(255, 157, 12, 58),
+          backgroundColor: index % 2 == 0
+              ? Colors.pink
+              : const Color.fromARGB(255, 157, 12, 58),
           foregroundColor: Colors.white,
-          child: Text(names[index].name[0],
-          style:const TextStyle(
-           fontWeight: FontWeight.bold,
-          ),
+          child: Text(
+            names[index].name[0],
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(names[index].name,
-            style:const TextStyle(fontWeight: FontWeight.bold),),
+            Text(
+              names[index].name,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
           ],
         ),
         trailing: SizedBox(
@@ -137,24 +144,24 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Row(
             children: [
               InkWell(
-                onTap: () {
-                  nameController.text=names[index].name;
-setState(() {
-  selectedIndex=index;
-});
+                  onTap: () {
+                    nameController.text = names[index].name;
+                    setState(() {
+                      selectedIndex = index;
+                    });
                   },
-                child:const Icon(Icons.edit)),
+                  child: const Icon(Icons.edit)),
               InkWell(
-                 onTap: (() {
+                  onTap: (() {
                     setState(() {
                       names.removeAt(index);
                     });
                     //
                   }),
-                child:const Icon(Icons.delete)),
+                  child: const Icon(Icons.delete)),
             ],
           ),
-        ) ,
+        ),
       ),
     );
   }
