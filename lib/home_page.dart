@@ -28,6 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               SizedBox(height: 30),
               TextField(
+                keyboardType: TextInputType.name,
         decoration: InputDecoration(
           hintText: 'Enter Name',
           border: OutlineInputBorder(
