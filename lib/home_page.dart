@@ -93,9 +93,8 @@ class _MyHomePageState extends State<MyHomePage> {
     
     return Card(
       child: ListTile(
-
         leading: CircleAvatar(
-          child: Text(data),
+          child: Text(names[index].name[0]),
         ),
         title: Column(
           children: [
