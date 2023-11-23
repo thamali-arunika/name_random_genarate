@@ -53,9 +53,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                   child:const Text('Save')),
 
-                ElevatedButton(onPressed: null, 
-                
-                child: Text('Update')),
+                ElevatedButton(
+                   onPressed: (){
+                    String name=nameController.text.trim();
+                    if (name.isNotEmpty){
+                      setState(() {
+                        nameController.text='';
+                        names.add(SaveName(name: name));
+                      });
+                    }
+                  },
+                child:const Text('Update')),
               ],
             ),
             names.isEmpty
