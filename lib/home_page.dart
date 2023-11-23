@@ -90,8 +90,13 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget getRow(int index) {
+    
     return Card(
       child: ListTile(
+
+        leading: CircleAvatar(
+          child: Text(data),
+        ),
         title: Column(
           children: [
             Text(names[index].name),
