@@ -17,7 +17,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void dividedGroup(){
     List<SaveName> TransferredNames=List.from(names)..shuffle();
-    
+    int groupSize=(TransferredNames.length/2).ceil();
   }
   @override
   Widget build(BuildContext context) {
