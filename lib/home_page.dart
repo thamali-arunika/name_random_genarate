@@ -38,14 +38,15 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               SizedBox(height: 30),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
                    onPressed:null,
         
-                   child: Text('Save'));
+                   child: Text('Save')),
 
                      ElevatedButton(
-                      onPressed: onPressed, 
+                      onPressed: null, 
                       child: Text('Update')),
                 ],
               )
