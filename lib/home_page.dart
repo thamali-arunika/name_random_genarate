@@ -48,6 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     if (name.isNotEmpty){
                       setState(() {
                         names.add(SaveName(name: name));
+                      
                       });
                     }
                   },
@@ -94,6 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Card(
       child: ListTile(
         leading: CircleAvatar(
+          backgroundColor: index%2==0 ? Colors.pink :const Color.fromARGB(255, 157, 12, 58),
           child: Text(names[index].name[0]),
         ),
         title: Column(
