@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Group Creater',
       theme: ThemeData(
-        
+        primarySwatch:Colors.pink,
       ),
       home: const MyHomePage(),
     );
