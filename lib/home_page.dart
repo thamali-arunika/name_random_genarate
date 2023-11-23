@@ -116,8 +116,8 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               InkWell(
                 onTap: () {
+                  nameController.text=names[index].name;
                   
-                    //
                   },
                 child:const Icon(Icons.edit)),
               InkWell(
