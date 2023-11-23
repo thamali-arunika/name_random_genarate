@@ -26,6 +26,7 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: EdgeInsets.all(8.0),
           child: Column(
             children: [
+              SizedBox(height: 30),
               TextField(
         decoration: InputDecoration(
           hintText: 'Enter Name',
@@ -33,7 +34,8 @@ class _MyHomePageState extends State<MyHomePage> {
             borderRadius: BorderRadius.all(Radius.circular(10))
           )
         ),
-              )
+              ),
+              SizedBox(height: 30),
             ],
           ),
         ),
