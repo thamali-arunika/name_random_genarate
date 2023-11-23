@@ -66,9 +66,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 child:const Text('Update')),
               ],
             ),
+           const SizedBox(height: 50),
             names.isEmpty
                 ? const Text(
                     'Not Names Yet ....',
+                    style: TextStyle(
+                      fontSize: 50,
+                      fontFamily: 'MyFontCaveat',
+                      color:Color.fromARGB(255, 168, 3, 55),
+                      fontWeight: FontWeight.bold
+                    ),
                   )
                 : Expanded(
                     child: ListView.builder(
