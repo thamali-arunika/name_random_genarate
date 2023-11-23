@@ -9,6 +9,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+    TextEditingController nameController = TextEditingController();
   List<SaveName> names = List.empty(growable: true);
   @override
   Widget build(BuildContext context) {
@@ -25,45 +26,61 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Color.fromARGB(255, 4, 152, 148)),
           )),
       body: Padding(
-        padding: EdgeInsets.all(8.0),
+        padding:const EdgeInsets.all(8.0),
         child: Column(
           children: [
-         const   SizedBox(height: 30),
-          const  TextField(
+            const SizedBox(height: 30),
+             TextField(
               keyboardType: TextInputType.name,
-              decoration: InputDecoration(
+              controller: nameController,
+              decoration:const InputDecoration(
                   hintText: 'Enter Name',
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)))),
             ),
-           const  SizedBox(height: 30),
-            const Row(
+            const SizedBox(height: 30),
+             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(onPressed: null, child: Text('Save')),
-                ElevatedButton(onPressed: null, child: Text('Update')),
+                ElevatedButton(
+                  onPressed: (){
+                    String name=nameController.text.trim();
+                    if (name.isNotEmpty){
+                      setState(() {
+                        names.add(SaveName(name: name));
+                      });
+                    }
+                  },
+                  child:const Text('Save')),
+
+                ElevatedButton(onPressed: null, 
+                
+                child: Text('Update')),
               ],
             ),
-            names.isEmpty ? const Text('Not Names Yet ....',)
-          Expanded(
-            child: ListView.builder(
-              itemCount: names.length,
-              itemBuilder: (context, index) => getRow(index),
-               ),
-          )
+            names.isEmpty
+                ? const Text(
+                    'Not Names Yet ....',
+                  )
+                : Expanded(
+                    child: ListView.builder(
+                      itemCount: names.length,
+                      itemBuilder: (context, index) => getRow(index),
+                    ),
+                  )
           ],
         ),
       ),
     );
   }
 
-  Widget getRow(int index){
+  Widget getRow(int index) {
     return ListTile(
-title: Column(
-  children: [
-    Text(names[index].name),
-  ],
-),
+      title: Column(
+        children: [
+          Text(names[index].name),
+        ],
+      ),
     );
   }
 }
