@@ -16,7 +16,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    debugDisableShadows = false;
    return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -31,14 +30,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Color.fromARGB(255, 4, 152, 148),
               ),
             ),
-            const SizedBox(height: 8), // Adjust the spacing as needed
-            Text(
-              'Names Count: ${names.length}',
-              style:const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-                color: Colors.black
-                ),
+            const SizedBox(height: 5), // Adjust the spacing as needed
+            Padding(
+              padding: const EdgeInsets.only(left: 190),
+              child: Text(
+                'Names Count: ${names.length}',
+                style:const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black
+                  ),
+              ),
             ),
           ],
         ),
