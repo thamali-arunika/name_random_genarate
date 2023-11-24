@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:random_creater/divided_names.dart';
 import 'package:random_creater/save_name.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -12,22 +13,6 @@ class _MyHomePageState extends State<MyHomePage> {
   TextEditingController nameController = TextEditingController();
   List<SaveName> names = List.empty(growable: true);
   int selectedIndex = -1;
-
-  void dividedGroup() {
-    List<SaveName> transferrednames = List.from(names)..shuffle();
-
-    int groupSize = (transferrednames.length / 5).ceil();
-
-    List<List<SaveName>> groups = List.generate(5, (index) {
-      int start = index * groupSize;
-      int end = (index + 1) * groupSize;
-      return transferrednames.sublist(
-          start, end > transferrednames.length ? transferrednames.length : end);
-    });
-    for (int i = 0; i < groups.length; i++) {
-      print('Group ${i + 1}: ${groups[i].map((name) => name.name).toList()}');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,14 +68,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       }
                     },
                     child: const Text('Update')),
-            ElevatedButton(
-          onPressed: () {
-            setState(() {
-              dividedGroup();
-            });
-          },
-          child:const Text('Split group'),
-        ),
+         ElevatedButton(
+          
+         );
+        
               ],
             ),
             const SizedBox(height: 50),
@@ -98,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ? const Text(
                     'Not Names Yet ....',
                     style: TextStyle(
-                        fontSize: 50,
+                        fontSize: 40,
                         fontStyle: FontStyle.normal,
                         color: Color.fromARGB(255, 168, 3, 55),
                         fontWeight: FontWeight.bold),
