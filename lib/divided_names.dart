@@ -14,7 +14,7 @@ class DividedNameScreen extends StatelessWidget {
    return Scaffold(
       appBar: AppBar(
         title:const Text(
-          'Creative Groups',
+          'Name Groups',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
@@ -22,7 +22,7 @@ class DividedNameScreen extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.deepPurple, // Change the app bar color
+        backgroundColor:const Color.fromARGB(255, 162, 53, 75), 
       ),
       body: Container(
         padding:const EdgeInsets.all(16),
@@ -30,7 +30,7 @@ class DividedNameScreen extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Colors.deepPurple, Colors.indigo],
+            colors: [Color.fromARGB(255, 183, 58, 58), Color.fromARGB(255, 181, 63, 118)],
           ),
         ),
         child: ListView.builder(
@@ -41,14 +41,14 @@ class DividedNameScreen extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
-              color: Colors.white, // Card background color
+              color: Colors.white, 
               child: ListTile(
                 title: Text(
                   'Group ${index + 1}',
                   style:const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: Colors.deepPurple, // Text color
+                    color: Colors.deepPurple, 
                   ),
                 ),
                 subtitle: Column(
@@ -58,7 +58,7 @@ class DividedNameScreen extends StatelessWidget {
                             name.name,
                             style:const TextStyle(
                               fontSize: 18,
-                              color: Colors.indigo, // Text color
+                              color: Colors.indigo, 
                             ),
                           ))
                       .toList(),
@@ -82,7 +82,6 @@ class DividedNameScreen extends StatelessWidget {
       dividedGroups[i].addAll(shuffledNames.sublist(current, current + groupSize));
       current += groupSize;
 
-      // If the group has less than 5 members, add remaining names randomly
       while (dividedGroups[i].length < 5 && current < shuffledNames.length) {
         int randomIndex = Random().nextInt(numberOfGroups);
         dividedGroups[randomIndex].add(shuffledNames[current]);

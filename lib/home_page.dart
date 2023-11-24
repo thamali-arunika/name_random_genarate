@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ElevatedButton(
                   onPressed: () {
                     String name = nameController.text.trim();
-                    if (name.isNotEmpty) {
+                    if (name.isNotEmpty && !names.contains(name)) {
                       setState(() {
                         names.add(SaveName(name: name));
                         nameController.text = '';
@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => DividedNameScreen(
-                          nameList: names, // Pass the List<SaveName> directly
+                          nameList: names,
                         ),
                       ),
                     );
