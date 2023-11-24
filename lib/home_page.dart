@@ -17,17 +17,29 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     debugDisableShadows = false;
-    return Scaffold(
+   return Scaffold(
       appBar: AppBar(
-          centerTitle: true,
-          title: const Text(
-            'Group Creater',
-            style: TextStyle(
+        centerTitle: true,
+        title: Column(
+          children: [
+            const Text(
+              'Group Creator',
+              style: TextStyle(
                 fontFamily: 'MyFontCaveat',
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 4, 152, 148)),
-          )),
+                color: Color.fromARGB(255, 4, 152, 148),
+              ),
+            ),
+            const SizedBox(height: 5), // Adjust the spacing as needed
+            Text(
+              'Names Count: ${names.length}',
+              style:const TextStyle(fontSize: 16),
+            ),
+          ],
+        ),
+      ),
+          
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(

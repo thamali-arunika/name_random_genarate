@@ -32,17 +32,14 @@ class DividedNameScreen extends StatelessWidget {
   }
 
   // Function to divide names into groups
-  List<List<SaveName>> _divideNamesIntoGroups(List<SaveName> names, int groupSize) {
-    List<List<SaveName>> dividedGroups = [];
+List<List<SaveName>> _divideNamesIntoGroups(List<SaveName> names, int numberOfGroups) {
+  List<List<SaveName>> dividedGroups = List.generate(numberOfGroups, (index) => <SaveName>[]);
 
-    for (int i = 0; i < names.length; i += groupSize) {
-      int end = (i + groupSize < names.length) ? i + groupSize : names.length;
-      dividedGroups.add(names.sublist(i, end));
-    }
-    while (dividedGroups.length<5) {
-      dividedGroups.add([]);
-    }
-
-    return dividedGroups;
+  for (int i = 0; i < names.length; i++) {
+    dividedGroups[i % numberOfGroups].add(names[i]);
   }
+
+  return dividedGroups;
+}
+
 }
