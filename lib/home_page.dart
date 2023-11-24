@@ -31,10 +31,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Color.fromARGB(255, 4, 152, 148),
               ),
             ),
-            const SizedBox(height: 5), // Adjust the spacing as needed
+            const SizedBox(height: 8), // Adjust the spacing as needed
             Text(
               'Names Count: ${names.length}',
-              style:const TextStyle(fontSize: 16),
+              style:const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Colors.black
+                ),
             ),
           ],
         ),
