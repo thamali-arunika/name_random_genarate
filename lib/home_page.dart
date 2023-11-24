@@ -68,10 +68,18 @@ class _MyHomePageState extends State<MyHomePage> {
                       }
                     },
                     child: const Text('Update')),
-         ElevatedButton(
-          
-         );
-        
+                ElevatedButton(
+                    onPressed: () {
+                      // Open new UI to display divided name groups
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              DividedNameScreen(nameList: names),
+                        ),
+                      );
+                    },
+                    child: const Text('Divide Groups')),
               ],
             ),
             const SizedBox(height: 50),
