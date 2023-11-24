@@ -39,6 +39,9 @@ class DividedNameScreen extends StatelessWidget {
       int end = (i + groupSize < names.length) ? i + groupSize : names.length;
       dividedGroups.add(names.sublist(i, end));
     }
+    while (dividedGroups.length<5) {
+      dividedGroups.add([]);
+    }
 
     return dividedGroups;
   }
